@@ -1,0 +1,41 @@
+li.related_question {
+    position: relative;
+}
+
+div.qe-popover {
+    height: 120px;
+    width: 340px;
+    background: #ffffff;
+    border: 1px solid #b0b0b0;
+    border-radius: 3px;
+    box-shadow: 1px 4px 5px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: -124px;
+    left: 0;
+    animation: popoverFadein 0.3s linear forwards;
+}
+
+@keyframes popoverFadein {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+div.qe-popover.fading-out {
+    animation: popoverFadeout 0.3s linear forwards;
+}
+
+@keyframes popoverFadeout {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+    100% {
+        opacity: 0;
+    }
+}

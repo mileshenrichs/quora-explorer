@@ -26,22 +26,16 @@ public class ExploreController {
             driver.get("https://quora.com/" + q);
 
             JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
-            int prevPageSourceLength = Integer.MIN_VALUE;
-            String pageSource = "";
 
-            while(pageSource.length() != prevPageSourceLength) {
-                prevPageSourceLength = pageSource.length();
-
+            for(int i = 0; i < 10; i++) {
                 jsExecutor.executeScript("window.scrollTo(0, document.body.scrollHeight)");
 
-                TimeUnit.MILLISECONDS.sleep(300);
+                TimeUnit.MILLISECONDS.sleep(600);
 
-                jsExecutor.executeScript("window.scrollTo(0, document.body.scrollHeight * .85)");
-
-                TimeUnit.MILLISECONDS.sleep(300);
-
-                pageSource = driver.getPageSource();
+                String pageSource = driver.getPageSource();
+                PageParser parser = new PageParser(pageSource);
                 System.out.println(pageSource.length());
+                System.out.println("There are " + parser.getAnswerCount() + " answers found so far.");
             }
         } catch (InterruptedException e) {
             e.printStackTrace();

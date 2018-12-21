@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 @RestController
@@ -23,20 +25,26 @@ public class ExploreController {
 
             System.setProperty("webdriver.chrome.driver", "C:\\chromedriver_win32\\chromedriver.exe");
             WebDriver driver = new ChromeDriver();
+            JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
             driver.get("https://quora.com/" + q);
 
-            JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+            List<Answer> answers = new ArrayList<>();
+            PageParser parser = new PageParser(driver.getPageSource());
+            int i = 1;
 
-            for(int i = 0; i < 10; i++) {
+            while(parser.getAnswerCount() > answers.size() && i <= 10) {
+                System.out.println("Iteration: " + i);
+                System.out.println("Answer count: " + answers.size());
+
+                answers = parser.getAnswers();
                 jsExecutor.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+                TimeUnit.SECONDS.sleep((long) 1.8);
+                parser = new PageParser(driver.getPageSource());
 
-                TimeUnit.MILLISECONDS.sleep(600);
-
-                String pageSource = driver.getPageSource();
-                PageParser parser = new PageParser(pageSource);
-                System.out.println(pageSource.length());
-                System.out.println("There are " + parser.getAnswerCount() + " answers found so far.");
+                i++;
             }
+
+            System.out.println("Final answer count: " + answers.size());
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

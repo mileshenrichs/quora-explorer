@@ -8,4 +8,12 @@ public class Answer {
         this.author = author;
         this.numUpvotes = numUpvotes;
     }
+
+    public int getNumUpvotes() {
+        return numUpvotes;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
 }

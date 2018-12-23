@@ -1,7 +1,7 @@
 console.log('Quora explorer is running.');
 
 const relatedQuestions = [];
-let popupManager;
+let popoverManager;
 
 const relatedQuestionsDiv = document.querySelector('div.RelatedQuestions');
 if(relatedQuestionsDiv) {
@@ -13,15 +13,15 @@ if(relatedQuestionsDiv) {
         relatedQuestions.push(new RelatedQuestion(link.innerText, link.href));
     });
 
-    popupManager = new PopupManager(relatedQuestions, relatedQuestionsUl);
+    popoverManager = new PopoverManager(relatedQuestions, relatedQuestionsUl);
 }
 
 function triggerQuestionPopover(hoverEvent) {
     const qId = relatedQuestions.map(q => q.url).indexOf(hoverEvent.target.href);
-    popupManager.openPopover(qId);
+    popoverManager.openPopover(qId);
 }
 
 function closeQuestionPopover(hoverEvent) {
     const qId = relatedQuestions.map(q => q.url).indexOf(hoverEvent.target.href);
-    popupManager.closePopover(qId);
+    popoverManager.closePopover(qId);
 }

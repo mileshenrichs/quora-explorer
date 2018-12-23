@@ -28,7 +28,7 @@
         "models/RelatedQuestion.js",
         "util/QuestionScraper.js",
         "util/ScrapeService.js",
-        "util/PopupManager.js",
+        "util/PopoverManager.js",
         "explorer.js"
       ],
       "css": ["popover.css"]

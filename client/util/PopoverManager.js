@@ -1,4 +1,4 @@
-class PopupManager {
+class PopoverManager {
 
     /**
      * @param relatedQuestions list of RelatedQuestion objects

@@ -32,13 +32,13 @@ public class ExploreController {
             PageParser parser = new PageParser(driver.getPageSource());
             int i = 1;
 
-            while(parser.getAnswerCount() > answers.size() && i <= 12) {
+            while(parser.getAnswerCount() > answers.size()) {
                 System.out.println("Iteration: " + i);
                 System.out.println("Answer count: " + answers.size());
 
                 answers = parser.getAnswers();
                 jsExecutor.executeScript("window.scrollTo(0, document.body.scrollHeight)");
-                TimeUnit.SECONDS.sleep((long) 1.2);
+                TimeUnit.SECONDS.sleep((long) 1);
                 parser = new PageParser(driver.getPageSource());
 
                 i++;

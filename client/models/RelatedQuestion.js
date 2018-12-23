@@ -1,10 +1,15 @@
 class RelatedQuestion {
 
     constructor(qTitle, qUrl) {
+        this.id = qUrl.substring(22);
         this.title = qTitle;
-        this.url = qUrl;
         this.numAnswers = undefined;
         this.topRatedAnswerScore = undefined;
+        this.isPopoverOpen = false;
+    }
+
+    hasNoData() {
+        return this.numAnswers === undefined && this.topRatedAnswerScore === undefined;
     }
 
 }

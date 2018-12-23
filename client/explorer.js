@@ -17,11 +17,11 @@ if(relatedQuestionsDiv) {
 }
 
 function triggerQuestionPopover(hoverEvent) {
-    const qId = relatedQuestions.map(q => q.url).indexOf(hoverEvent.target.href);
+    const qId = hoverEvent.target.href.substring(22);
     popoverManager.openPopover(qId);
 }
 
 function closeQuestionPopover(hoverEvent) {
-    const qId = relatedQuestions.map(q => q.url).indexOf(hoverEvent.target.href);
+    const qId = hoverEvent.target.href.substring(22);
     popoverManager.closePopover(qId);
 }

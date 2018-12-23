@@ -7,6 +7,7 @@ class PopoverManager {
     constructor(relatedQuestions, listDOM) {
         this.relatedQuestions = relatedQuestions;
         this.listDOM = listDOM;
+        this.currentOpenPopoverQuestionIndex = -1;
     }
 
     openPopover(questionId) {
@@ -32,21 +33,27 @@ class PopoverManager {
                     });
             }
 
-            this.relatedQuestions[questionIndex].isPopoverOpen = true;
+            this.currentOpenPopoverQuestionIndex = questionIndex;
         }
     }
 
-    closePopover(questionId) {
-        const questionIndex = this.relatedQuestions.map(rq => rq.id).indexOf(questionId);
+    closePopover() {
+        const questionIndex = this.currentOpenPopoverQuestionIndex;
         const popup = this.listDOM.children[questionIndex].querySelector('div.qe-popover');
-        this.relatedQuestions[questionIndex].isPopoverOpen = false;
+        this.currentOpenPopoverQuestionIndex = -1;
 
         popup.classList.add('fading-out');
         setTimeout(() => {
-            if(!this.relatedQuestions[questionIndex].isPopoverOpen) {
-                this.listDOM.children[questionIndex].removeChild(popup);
-            }
+            this.listDOM.children[questionIndex].removeChild(popup);
         }, 300);
+    }
+
+    getCurrentPopoverDOMReference() {
+        return this.listDOM.children[this.currentOpenPopoverQuestionIndex].querySelector('div.qe-popover');
+    }
+
+    hasPopoverOpen() {
+        return this.currentOpenPopoverQuestionIndex > -1;
     }
 
 }

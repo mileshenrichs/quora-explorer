@@ -5,7 +5,6 @@ class RelatedQuestion {
         this.title = qTitle;
         this.numAnswers = undefined;
         this.topRatedAnswerScore = undefined;
-        this.isPopoverOpen = false;
     }
 
     hasNoData() {

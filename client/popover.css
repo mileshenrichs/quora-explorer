@@ -2,6 +2,10 @@ li.related_question {
     position: relative;
 }
 
+li.related_question span.ui_qtext_rendered_qtext {
+    padding-top: 10px;
+}
+
 div.qe-popover {
     height: 120px;
     width: 340px;

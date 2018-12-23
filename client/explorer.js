@@ -29,14 +29,12 @@ function triggerQuestionPopover(hoverEvent) {
 }
 
 function onMouseMoveWhilePopoverOpen(e) {
-    setTimeout(() => {
-        if(!popoverShouldRemainOpen(e.target)) {
-            console.log('time to close!');
+    if(!popoverShouldRemainOpen(e.target)) {
+        console.log('time to close!');
 
-            document.removeEventListener('mousemove', onMouseMoveWhilePopoverOpen);
-            popoverManager.closePopover();
-        }
-    }, 120);
+        document.removeEventListener('mousemove', onMouseMoveWhilePopoverOpen);
+        popoverManager.closePopover();
+    }
 }
 
 function popoverShouldRemainOpen(target) {

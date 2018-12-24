@@ -6,7 +6,7 @@ class HTMLFactory {
     /**
      * @returns {string} default pre-data state of popover
      */
-    static getNoDataPopoverMarkup() {
+    static getBasePopoverMarkup() {
         return '<div class="qe-popover">' +
             '    <h2 class="question-title">What don\'t people tell you about working at a top tech company?</h2>' +
             '' +
@@ -27,5 +27,11 @@ class HTMLFactory {
             '    </div>' +
             '</div>';
     }
-    
+
+    static getLoadingStateInfoChunk() {
+        return '<span class="info-chunk__number loading">' +
+            '    <img src="assets/loader.gif" alt="..."/>' +
+            '</span>';
+    }
+
 }

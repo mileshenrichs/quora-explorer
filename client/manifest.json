@@ -29,6 +29,7 @@
         "util/QuestionScraper.js",
         "util/ScrapeService.js",
         "util/PopoverManager.js",
+        "util/PopoverBuilder.js",
         "util/HTMLFactory.js",
         "explorer.js"
       ],
@@ -37,7 +38,8 @@
   ],
 
   "web_accessible_resources": [
-    "assets/popover-bg.png"
+    "assets/popover-bg.png",
+    "assets/loader.gif"
   ]
 
 }

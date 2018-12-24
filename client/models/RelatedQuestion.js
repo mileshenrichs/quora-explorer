@@ -7,8 +7,8 @@ class RelatedQuestion {
         this.topRatedAnswerScore = undefined;
     }
 
-    hasNoData() {
-        return this.numAnswers === undefined && this.topRatedAnswerScore === undefined;
+    hasData() {
+        return this.numAnswers !== undefined && this.topRatedAnswerScore !== undefined;
     }
 
 }

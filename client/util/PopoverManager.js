@@ -17,14 +17,17 @@ class PopoverManager {
     openPopover(questionId) {
         const questionIndex = this.relatedQuestions.map(rq => rq.id).indexOf(questionId);
         const questionLi = this.listDOM.children[questionIndex];
-        if(!questionLi.querySelector('div.qe-popover')) {
+        if(!questionLi.querySelector('div.qe-popover')) { // check that there isn't already a popover open here
             const relatedQuestion = this.relatedQuestions[questionIndex];
 
-            const domParser = new DOMParser().parseFromString(HTMLFactory.getNoDataPopoverMarkup(), 'text/xml');
-            const popoverContent = domParser.firstChild;
-            questionLi.appendChild(popoverContent);
-
-            if(relatedQuestion.hasNoData()) {
+            const popoverBuilder = new PopoverBuilder(questionLi);
+            // popoverBuilder.setTitle(relatedQuestion.title);
+            // popoverBuilder.setViewButtonUrl('https://quora.com/' + relatedQuestion.id);
+            if(relatedQuestion.hasData()) {
+                // build popover using data
+                // popoverBuilder.setNumAnswers(relatedQuestion.numAnswers);
+                // popoverBuilder.setTopRated(relatedQuestion.topRatedAnswerScore);
+            } else {
                 // todo: show loading indicator
 
                 // scrape question information
@@ -33,8 +36,8 @@ class PopoverManager {
                     .then(scrapeInfo => {
                         console.log(scrapeInfo);
                     }).catch(err => {
-                        console.log(err);
-                    });
+                    console.log(err);
+                });
             }
 
             this.currentOpenPopoverQuestionIndex = questionIndex;
@@ -46,12 +49,12 @@ class PopoverManager {
      */
     closePopover() {
         const questionIndex = this.currentOpenPopoverQuestionIndex;
-        const popup = this.listDOM.children[questionIndex].querySelector('div.qe-popover');
+        const popover = this.listDOM.children[questionIndex].querySelector('div.qe-popover');
         this.currentOpenPopoverQuestionIndex = -1;
 
-        popup.classList.add('fading-out');
+        popover.classList.add('fading-out');
         setTimeout(() => {
-            this.listDOM.children[questionIndex].removeChild(popup);
+            this.listDOM.children[questionIndex].removeChild(popover);
         }, 300);
     }
 

@@ -21,8 +21,8 @@ class PopoverManager {
             const relatedQuestion = this.relatedQuestions[questionIndex];
 
             const popoverBuilder = new PopoverBuilder(questionLi);
-            // popoverBuilder.setTitle(relatedQuestion.title);
-            // popoverBuilder.setViewButtonUrl('https://quora.com/' + relatedQuestion.id);
+            popoverBuilder.setTitle(relatedQuestion.title);
+            popoverBuilder.setViewButtonUrl('https://quora.com/' + relatedQuestion.id);
             if(relatedQuestion.hasData()) {
                 // build popover using data
                 // popoverBuilder.setNumAnswers(relatedQuestion.numAnswers);

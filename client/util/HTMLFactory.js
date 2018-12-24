@@ -8,7 +8,7 @@ class HTMLFactory {
      */
     static getBasePopoverMarkup() {
         return '<div class="qe-popover">' +
-            '    <h2 class="question-title">What don\'t people tell you about working at a top tech company?</h2>' +
+            '    <h2 class="question-title"></h2>' +
             '' +
             '    <div class="question-detail-section">' +
             '        <div class="question-data">' +
@@ -23,7 +23,7 @@ class HTMLFactory {
             '            </div>' +
             '        </div>' +
             '' +
-            '        <a href="#" class="view-question-button">view</a>' +
+            '        <a href="https://quora.com" class="view-question-button">view</a>' +
             '    </div>' +
             '</div>';
     }

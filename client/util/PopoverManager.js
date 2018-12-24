@@ -10,16 +10,20 @@ class PopoverManager {
         this.currentOpenPopoverQuestionIndex = -1;
     }
 
+    /**
+     * Given a question id, open a popover above the question by directly appending HTML to the DOM
+     * @param questionId the string id of the question
+     */
     openPopover(questionId) {
         const questionIndex = this.relatedQuestions.map(rq => rq.id).indexOf(questionId);
         const questionLi = this.listDOM.children[questionIndex];
         if(!questionLi.querySelector('div.qe-popover')) {
-            const popup = document.createElement('div');
-            popup.className = 'qe-popover';
-
-            questionLi.appendChild(popup);
-
             const relatedQuestion = this.relatedQuestions[questionIndex];
+
+            const domParser = new DOMParser().parseFromString(HTMLFactory.getNoDataPopoverMarkup(), 'text/xml');
+            const popoverContent = domParser.firstChild;
+            questionLi.appendChild(popoverContent);
+
             if(relatedQuestion.hasNoData()) {
                 // todo: show loading indicator
 
@@ -37,6 +41,9 @@ class PopoverManager {
         }
     }
 
+    /**
+     * Closes the currently open popover over the span of 300 ms
+     */
     closePopover() {
         const questionIndex = this.currentOpenPopoverQuestionIndex;
         const popup = this.listDOM.children[questionIndex].querySelector('div.qe-popover');

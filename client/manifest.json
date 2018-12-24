@@ -29,10 +29,15 @@
         "util/QuestionScraper.js",
         "util/ScrapeService.js",
         "util/PopoverManager.js",
+        "util/HTMLFactory.js",
         "explorer.js"
       ],
       "css": ["popover.css"]
     }
+  ],
+
+  "web_accessible_resources": [
+    "assets/popover-bg.png"
   ]
 
 }

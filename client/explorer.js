@@ -28,15 +28,23 @@ function triggerQuestionPopover(hoverEvent) {
     document.addEventListener('mousemove', onMouseMoveWhilePopoverOpen);
 }
 
+/**
+ * While there is a popover open, track mouse movement to determine when the popover should be closed
+ * @param e mousemove event
+ */
 function onMouseMoveWhilePopoverOpen(e) {
     if(!popoverShouldRemainOpen(e.target)) {
-        console.log('time to close!');
-
         document.removeEventListener('mousemove', onMouseMoveWhilePopoverOpen);
         popoverManager.closePopover();
     }
 }
 
+/**
+ * Given the target element of a mouse movement, determine whether the popover that's currently
+ * open should remain open or be closed
+ * @param target DOM reference to the target of a mousemove event
+ * @returns {boolean} false if popover should be closed
+ */
 function popoverShouldRemainOpen(target) {
     if(target.tagName === 'A') // mouse is on related question link
         return true;

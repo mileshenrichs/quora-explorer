@@ -25,8 +25,8 @@ class PopoverManager {
             popoverBuilder.setViewButtonUrl('https://quora.com/' + relatedQuestion.id);
             if(relatedQuestion.hasData()) {
                 // build popover using data
-                // popoverBuilder.setNumAnswers(relatedQuestion.numAnswers);
-                // popoverBuilder.setTopRated(relatedQuestion.topRatedAnswerScore);
+                popoverBuilder.setNumAnswers(relatedQuestion.numAnswers);
+                popoverBuilder.setTopRatedAnswer(relatedQuestion.topRatedAnswerScore);
             } else {
                 popoverBuilder.indicateLoadingState();
 
@@ -53,15 +53,6 @@ class PopoverManager {
                             popoverBuilder.setTopRatedAnswer(topRatedAns);
                         }
                     });
-
-                // scrape question information
-                // ScrapeService.scrapeQuestion(relatedQuestion.id)
-                //     .then(res => res.json())
-                //     .then(scrapeInfo => {
-                //         console.log(scrapeInfo);
-                //     }).catch(err => {
-                //     console.log(err);
-                // });
             }
 
             this.currentOpenPopoverQuestionIndex = questionIndex;

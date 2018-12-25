@@ -7,15 +7,14 @@
 class PopoverBuilder {
 
     constructor(liDOMReference) {
-        this.liDOMReference = liDOMReference;
-        this.initNewPopover();
-        this.popoverDivDOMReference = this.liDOMReference.querySelector('div.qe-popover');
+        this.initNewPopover(liDOMReference);
+        this.popoverDivDOMReference = liDOMReference.querySelector('div.qe-popover');
     }
 
-    initNewPopover() {
+    initNewPopover(liDOMReference) {
         const domParser = new DOMParser().parseFromString(HTMLFactory.getBasePopoverMarkup(), 'text/xml');
         const popoverContent = domParser.firstChild;
-        this.liDOMReference.appendChild(popoverContent);
+        liDOMReference.appendChild(popoverContent);
 
         // view link click listener to prompt browser navigation to question (for some reason link href doesn't work)
         popoverContent.querySelector('a.view-question-button').addEventListener('click', this.followQuestionLink);
@@ -41,15 +40,18 @@ class PopoverBuilder {
     }
 
     setNumAnswers(numAnswers) {
-        console.log('setting num answers to ' + numAnswers);
         this.setChunkData(0, numAnswers);
     }
 
     setTopRatedAnswer(topRated) {
-        console.log('setting top rated answer with upvote count ' + topRated);
         this.setChunkData(1, topRated);
     }
 
+    /**
+     * Replace loading state of info chunk with data as provided in parameters
+     * @param chunkIndex index of chunk to set (i.e. 0 = answer count, 1 = top rated answer score)
+     * @param data string/number value to occupy the space
+     */
     setChunkData(chunkIndex, data) {
         const domParser = new DOMParser().parseFromString(HTMLFactory.getNumberChunkContainingValue(data), 'text/xml');
         const answerChunk = domParser.firstChild;
@@ -59,6 +61,10 @@ class PopoverBuilder {
         infoChunk.removeChild(infoChunk.children[1]);
     }
 
+    /**
+     * Redirects the browser to the related question whose "view" button was clicked.
+     * This is a workaround for the view button's <a> element, who for some reason does nothing when clicked.
+     */
     followQuestionLink() {
         // "this" is a reference to the "view" button (<a> element)
         window.location.href = this.attributes.href.value;

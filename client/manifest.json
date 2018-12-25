@@ -26,7 +26,6 @@
       "matches": ["*://*.quora.com/*"],
       "js": [
         "models/RelatedQuestion.js",
-        "util/QuestionScraper.js",
         "util/ScrapeService.js",
         "util/PopoverManager.js",
         "util/PopoverBuilder.js",

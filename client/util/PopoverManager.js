@@ -28,17 +28,40 @@ class PopoverManager {
                 // popoverBuilder.setNumAnswers(relatedQuestion.numAnswers);
                 // popoverBuilder.setTopRated(relatedQuestion.topRatedAnswerScore);
             } else {
-                // todo: show loading indicator
                 popoverBuilder.indicateLoadingState();
 
+                // scrape answer count
+                ScrapeService.getAnswerCount(relatedQuestion.id)
+                    .then(res => res.text())
+                    .then(ansCount => {
+                        // update data in RelatedQuestion state object
+                        this.relatedQuestions[questionIndex].numAnswers = ansCount;
+
+                        // if popover still open, update num answers with the new data
+                        if(this.currentOpenPopoverQuestionIndex === questionIndex) {
+                            popoverBuilder.setNumAnswers(ansCount);
+                        }
+                    });
+
+                // scrape top rated answer
+                ScrapeService.getTopRatedAnswer(relatedQuestion.id)
+                    .then(res => res.text())
+                    .then(topRatedAns => {
+                        this.relatedQuestions[questionIndex].topRatedAnswerScore = topRatedAns;
+
+                        if(this.currentOpenPopoverQuestionIndex === questionIndex) {
+                            popoverBuilder.setTopRatedAnswer(topRatedAns);
+                        }
+                    });
+
                 // scrape question information
-                ScrapeService.scrapeQuestion(relatedQuestion.id)
-                    .then(res => res.json())
-                    .then(scrapeInfo => {
-                        console.log(scrapeInfo);
-                    }).catch(err => {
-                    console.log(err);
-                });
+                // ScrapeService.scrapeQuestion(relatedQuestion.id)
+                //     .then(res => res.json())
+                //     .then(scrapeInfo => {
+                //         console.log(scrapeInfo);
+                //     }).catch(err => {
+                //     console.log(err);
+                // });
             }
 
             this.currentOpenPopoverQuestionIndex = questionIndex;

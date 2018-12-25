@@ -40,6 +40,25 @@ class PopoverBuilder {
         detailSection.removeChild(detailSection.children[1]);
     }
 
+    setNumAnswers(numAnswers) {
+        console.log('setting num answers to ' + numAnswers);
+        this.setChunkData(0, numAnswers);
+    }
+
+    setTopRatedAnswer(topRated) {
+        console.log('setting top rated answer with upvote count ' + topRated);
+        this.setChunkData(1, topRated);
+    }
+
+    setChunkData(chunkIndex, data) {
+        const domParser = new DOMParser().parseFromString(HTMLFactory.getNumberChunkContainingValue(data), 'text/xml');
+        const answerChunk = domParser.firstChild;
+
+        const infoChunk = this.popoverDivDOMReference.querySelectorAll('div.info-chunk')[chunkIndex];
+        infoChunk.insertBefore(answerChunk, infoChunk.firstChild);
+        infoChunk.removeChild(infoChunk.children[1]);
+    }
+
     followQuestionLink() {
         // "this" is a reference to the "view" button (<a> element)
         window.location.href = this.attributes.href.value;

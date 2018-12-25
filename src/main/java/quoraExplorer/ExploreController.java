@@ -16,40 +16,64 @@ import java.util.concurrent.TimeUnit;
 @CrossOrigin
 public class ExploreController {
 
-    @GetMapping("/api/explore")
-    public ScrapeInfo exploreQuestion(
+    @GetMapping("/api/answer-count")
+    public String getAnswerCount(
             @RequestParam(value="q") String q
     ) {
         try {
-            System.out.println(q);
-
-            System.setProperty("webdriver.chrome.driver", "C:\\chromedriver_win32\\chromedriver.exe");
-            WebDriver driver = new ChromeDriver();
-            JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
-            driver.get("https://quora.com/" + q);
-
-            List<Answer> answers = new ArrayList<>();
-            PageParser parser = new PageParser(driver.getPageSource());
-            int i = 1;
-
-            while(parser.getAnswerCount() > answers.size()) {
-                System.out.println("Iteration: " + i);
-                System.out.println("Answer count: " + answers.size());
-
-                answers = parser.getAnswers();
-                jsExecutor.executeScript("window.scrollTo(0, document.body.scrollHeight)");
-                TimeUnit.SECONDS.sleep((long) 1);
-                parser = new PageParser(driver.getPageSource());
-
-                i++;
-            }
-
-            System.out.println("Final answer count: " + answers.size());
+            TimeUnit.SECONDS.sleep((long) 1.75);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
-        return new ScrapeInfo(-1, 100);
+        return "49";
     }
+
+    @GetMapping("/api/top-rated-answer")
+    public String getTopRatedAnswer(
+            @RequestParam(value="q") String q
+    ) {
+        try {
+            TimeUnit.SECONDS.sleep((long) 3);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return "55.1k";
+    }
+
+//    @GetMapping("/api/top-rated-answer")
+//    public ScrapeInfo exploreQuestion(
+//            @RequestParam(value="q") String q
+//    ) {
+//        try {
+//            System.out.println(q);
+//
+//            System.setProperty("webdriver.chrome.driver", "C:\\chromedriver_win32\\chromedriver.exe");
+//            WebDriver driver = new ChromeDriver();
+//            JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+//            driver.get("https://quora.com/" + q);
+//
+//            List<Answer> answers = new ArrayList<>();
+//            PageParser parser = new PageParser(driver.getPageSource());
+//            int i = 1;
+//
+//            while(parser.getAnswerCount() > answers.size()) {
+//                System.out.println("Iteration: " + i);
+//                System.out.println("Answer count: " + answers.size());
+//
+//                answers = parser.getAnswers();
+//                jsExecutor.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+//                TimeUnit.SECONDS.sleep((long) 1);
+//                parser = new PageParser(driver.getPageSource());
+//
+//                i++;
+//            }
+//
+//            System.out.println("Final answer count: " + answers.size());
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+//
+//        return new ScrapeInfo(-1, 100);
+//    }
 
 }

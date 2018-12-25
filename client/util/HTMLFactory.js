@@ -46,4 +46,8 @@ class HTMLFactory {
             '</div>';
     }
 
+    static getNumberChunkContainingValue(val) {
+        return '<span class="info-chunk__number">' + val + '</span>';
+    }
+
 }

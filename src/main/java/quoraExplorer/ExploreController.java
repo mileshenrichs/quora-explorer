@@ -16,18 +16,6 @@ import java.util.concurrent.TimeUnit;
 @CrossOrigin
 public class ExploreController {
 
-    @GetMapping("/api/answer-count")
-    public String getAnswerCount(
-            @RequestParam(value="q") String q
-    ) {
-        try {
-            TimeUnit.SECONDS.sleep((long) 1.75);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        return "49";
-    }
-
     @GetMapping("/api/top-rated-answer")
     public String getTopRatedAnswer(
             @RequestParam(value="q") String q

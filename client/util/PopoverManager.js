@@ -31,15 +31,14 @@ class PopoverManager {
                 popoverBuilder.indicateLoadingState();
 
                 // scrape answer count
-                ScrapeService.getAnswerCount(relatedQuestion.id)
-                    .then(res => res.text())
-                    .then(ansCount => {
+                QuestionScraper.getAnswerCount("https://quora.com/" + relatedQuestion.id)
+                    .then(count => {
                         // update data in RelatedQuestion state object
-                        this.relatedQuestions[questionIndex].numAnswers = ansCount;
+                        this.relatedQuestions[questionIndex].numAnswers = count;
 
                         // if popover still open, update num answers with the new data
                         if(this.currentOpenPopoverQuestionIndex === questionIndex) {
-                            popoverBuilder.setNumAnswers(ansCount);
+                            popoverBuilder.setNumAnswers(count);
                         }
                     });
 

@@ -29,6 +29,7 @@ class PopoverManager {
                 // popoverBuilder.setTopRated(relatedQuestion.topRatedAnswerScore);
             } else {
                 // todo: show loading indicator
+                popoverBuilder.indicateLoadingState();
 
                 // scrape question information
                 ScrapeService.scrapeQuestion(relatedQuestion.id)

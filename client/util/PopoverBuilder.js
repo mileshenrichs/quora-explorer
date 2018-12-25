@@ -31,6 +31,15 @@ class PopoverBuilder {
         btn.setAttribute('href', urlHref);
     }
 
+    indicateLoadingState() {
+        const domParser = new DOMParser().parseFromString(HTMLFactory.getDetailSectionLoadingState(), 'text/xml');
+        const detailSectionLoading = domParser.firstChild;
+
+        const detailSection = this.popoverDivDOMReference.querySelector('div.question-detail-section');
+        detailSection.insertBefore(detailSectionLoading, detailSection.firstChild);
+        detailSection.removeChild(detailSection.children[1]);
+    }
+
     followQuestionLink() {
         // "this" is a reference to the "view" button (<a> element)
         window.location.href = this.attributes.href.value;

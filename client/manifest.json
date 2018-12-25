@@ -38,8 +38,7 @@
   ],
 
   "web_accessible_resources": [
-    "assets/popover-bg.png",
-    "assets/loader.gif"
+    "assets/popover-bg.png"
   ]
 
 }

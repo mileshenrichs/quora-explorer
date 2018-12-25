@@ -27,11 +27,23 @@ class HTMLFactory {
             '    </div>' +
             '</div>';
     }
-
-    static getLoadingStateInfoChunk() {
-        return '<span class="info-chunk__number loading">' +
-            '    <img src="assets/loader.gif" alt="..."/>' +
-            '</span>';
+    
+    static getDetailSectionLoadingState() {
+        return '<div class="question-data">' +
+            '    <div class="info-chunk">' +
+            '        <div class="info-chunk-loading answers-loading">' +
+            '            <div></div>' +
+            '        </div>' +
+            '        <span class="info-chunk__label">answers</span>' +
+            '    </div>' +
+            '' +
+            '    <div class="info-chunk">' +
+            '        <div class="info-chunk-loading toprated-loading">' +
+            '            <div></div>' +
+            '        </div>' +
+            '        <span class="info-chunk__label">top rated</span>' +
+            '    </div>' +
+            '</div>';
     }
 
 }

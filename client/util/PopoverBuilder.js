@@ -61,7 +61,9 @@ class PopoverBuilder {
 
     fadeOutLoadBar() {
         const loadBar = this.popoverDivDOMReference.querySelector('div.qe-loading-bar-fill');
-        loadBar.classList.add('all-done');
+        if(loadBar) {
+            loadBar.classList.add('all-done');
+        }
     }
 
     setNumAnswers(numAnswers) {

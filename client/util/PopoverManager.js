@@ -39,7 +39,8 @@ class PopoverManager {
                         // if popover still open, update num answers with the new data
                         if(this.currentOpenPopoverQuestionIndex === questionIndex) {
                             popoverBuilder.setNumAnswers(count);
-                            popoverBuilder.startLoadBar(8200);
+                            const predictedLoadTime = this.predictLoadTimeFromAnswerCount(count);
+                            popoverBuilder.startLoadBar(predictedLoadTime);
                         }
                     });
 
@@ -50,6 +51,7 @@ class PopoverManager {
                         this.relatedQuestions[questionIndex].topRatedAnswerScore = topRatedAns;
 
                         if(this.currentOpenPopoverQuestionIndex === questionIndex) {
+                            popoverBuilder.fadeOutLoadBar();
                             popoverBuilder.setTopRatedAnswer(topRatedAns);
                         }
                     });
@@ -79,6 +81,19 @@ class PopoverManager {
 
     hasPopoverOpen() {
         return this.currentOpenPopoverQuestionIndex > -1;
+    }
+
+    /**
+     * An artificial intelligence algorithm that efficiently approximates the amount of time
+     * that will likely be required for the top rated answer computation given the answer count
+     * @param ansCount number of answers for a given question
+     * @returns {number} a value of milliseconds, which represent the amount of time to show the loading bar
+     */
+    predictLoadTimeFromAnswerCount(ansCount) {
+        if(ansCount <= 7)
+            return 6000;
+
+        else return 8000;
     }
 
 }

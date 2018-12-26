@@ -1,3 +1,7 @@
+/**
+ * RelatedQuestion is a question listed in the list of "Related Questions" links
+ * on a given Quora question page.
+ */
 class RelatedQuestion {
 
     constructor(qTitle, qUrl) {

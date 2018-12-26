@@ -1,3 +1,8 @@
+/**
+ * PopoverManager receives instructions from the explorer.js entry point script.
+ * It opens popovers with the help of PopoverBuilder, keeps track of the currently open popover,
+ * and closes popovers as instructed by an event listener in explorer.js.
+ */
 class PopoverManager {
 
     /**
@@ -54,7 +59,13 @@ class PopoverManager {
                             popoverBuilder.fadeOutLoadBar();
                             popoverBuilder.setTopRatedAnswer(topRatedAns);
                         }
-                    });
+                    }).catch(err => {
+                        console.log(err);
+                        if(this.currentOpenPopoverQuestionIndex === questionIndex) {
+                            popoverBuilder.fadeOutLoadBar();
+                            popoverBuilder.setTopRatedAnswer('--');
+                        }
+                });
             }
 
             this.currentOpenPopoverQuestionIndex = questionIndex;

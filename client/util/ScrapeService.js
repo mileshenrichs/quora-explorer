@@ -1,3 +1,6 @@
+/**
+ * Service that uses Fetch API to interact with backend endpoints
+ */
 class ScrapeService {
 
     static getTopRatedAnswer(qId) {

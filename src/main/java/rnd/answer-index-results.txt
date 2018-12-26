@@ -1,0 +1,158 @@
+﻿Quora-is-a-curated-community-of-early-adopters-now-Its-nice-but-how-can-it-scale-What-will-prevent-Quora-from-becoming-similar-to-Yahoo-Answers:
+  22/82
+Dec 25, 2018 10:06:59 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: OSS
+Why-are-my-questions-not-answered-on-Quora:
+  83/106
+Dec 25, 2018 10:07:30 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: OSS
+Why-do-people-write-such-lengthy-answers-on-Quora:
+  37/576
+Dec 25, 2018 10:10:05 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: OSS
+Why-are-answers-on-Quora-collapsed:
+  0/176
+Dec 25, 2018 10:10:52 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: OSS
+Whats-the-most-inspiring-story-of-your-life:
+  2/165
+Dec 25, 2018 10:11:36 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: OSS
+Which-are-the-best-motivational-books-1:
+  4/685
+Dec 25, 2018 10:14:37 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: OSS
+What-books-should-entrepreneurs-read:
+  0/266
+Dec 25, 2018 10:15:50 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: OSS
+What-are-the-top-25-books-you-should-read:
+  11/149
+Dec 25, 2018 10:16:32 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: OSS
+What-is-the-strangest-sorting-algorithm:
+  4/70
+Dec 25, 2018 10:16:56 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: OSS
+How-can-I-become-a-data-scientist-1:
+  3/46
+Dec 25, 2018 10:17:14 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: OSS
+What-are-the-best-sites-for-learning-Data-Science-1:
+  2/131
+Dec 25, 2018 10:17:47 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: OSS
+What-was-your-scariest-travel-experience:
+  114/186
+Dec 25, 2018 10:18:45 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: OSS
+What-is-the-scariest-thing-that-has-ever-happened-to-you-2:
+  60/186
+Dec 25, 2018 10:19:36 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: OSS
+What-are-the-creepiest-paranormal-experiences-one-ever-had:
+  1/416
+Dec 25, 2018 10:21:29 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: OSS
+Whats-the-most-inexplicable-experience-youve-ever-had-whether-supernatural-paranormal-bizarre-coincidence-mysterious-intuition-prophetic-dream-or-unexpected-lab-result:
+  60/216
+Dec 25, 2018 10:22:27 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: OSS
+What-have-been-some-of-your-best-experiences-while-traveling:
+  116/520
+Dec 25, 2018 10:24:57 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: OSS
+What-are-the-worst-travel-experiences-you-have-ever-encountered:
+  0/26
+Dec 25, 2018 10:25:09 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: OSS
+What-is-your-worst-ever-showering-experience:
+  1/221
+Dec 25, 2018 10:26:08 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: OSS
+What-has-been-your-worst-experience-in-a-restaurant:
+  27/213
+Dec 25, 2018 10:27:06 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: OSS
+What-are-your-worst-experiences-in-a-movie-theatre:
+  110/506
+Dec 25, 2018 10:29:24 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: OSS
+What-is-your-craziest-TSA-experience:
+  4/317
+Dec 25, 2018 10:30:50 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: OSS
+What-is-your-craziest-US-immigration-experience:
+  83/106
+Dec 25, 2018 10:31:20 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: OSS
+Why-do-people-want-to-immigrate-to-the-United-States:
+  10/121
+Dec 25, 2018 10:31:55 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: OSS
+How-can-I-immigrate-to-the-US:
+  42/126
+Dec 25, 2018 10:32:30 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: OSS
+How-do-I-learn-to-cook-1:
+  0/254
+Dec 25, 2018 10:33:36 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: OSS
+What-can-you-cook:
+  27/46
+Dec 25, 2018 10:33:55 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: OSS
+What-are-the-best-ways-to-cook-chicken:
+  5/56
+Dec 25, 2018 10:34:14 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: OSS
+What-is-the-best-way-to-prepare-steak-What-is-the-best-cut-to-use-What-seasonings-are-best-and-in-what-proportions-What-is-the-ideal-degree-of-cooking-from-blue-to-well-done-Im-looking-for-optimum-deliciousness:
+  0/173
+Dec 25, 2018 10:34:57 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: OSS
+What-is-the-best-way-to-learn-Spanish-on-your-own:
+  124/340
+Dec 25, 2018 10:36:13 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: OSS
+Why-is-Spanish-an-important-language-to-learn:
+  4/100
+Dec 25, 2018 10:36:31 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: OSS
+What-is-the-best-way-to-learn-Spanish-independently-without-having-to-travel-to-a-Spanish-speaking-country:
+  5/201
+Dec 25, 2018 10:36:52 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: OSS
+What’s-the-simplest-way-to-learn-the-Spanish-language:
+  4/158
+Dec 25, 2018 10:37:36 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: OSS
+If-fire-needs-oxygen-where-does-the-sun-get-oxygen-if-theres-no-oxygen-in-space:
+  7/349
+Dec 25, 2018 10:39:07 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: OSS
+Can-people-see-atoms-with-their-naked-eye-To-rephrase-it-can-an-atom-be-so-dense-that-it’s-visible-to-the-naked-eye:
+  51/113
+Dec 25, 2018 10:39:25 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: OSS
+What-is-the-resolution-of-the-human-eye-in-megapixels:
+  7/97
+Dec 25, 2018 10:39:54 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: OSS
+What-is-the-speed-of-gravity-If-the-Sun-disappeared-would-the-Earth-continue-in-its-orbit-for-8½-minutes:
+  88/97
+Dec 25, 2018 10:40:20 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: OSS
+The-sun-attracts-the-moon-with-a-force-twice-as-large-as-the-attraction-of-the-earth-on-the-moon-Why-does-the-moon-not-revolve-around-the-sun:
+  8/101
+Dec 25, 2018 10:40:51 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: OSS
+How-and-why-are-planets-spherical-What-makes-them-round:
+  16/425
+Dec 25, 2018 10:41:34 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: OSS
+Could-a-hollow-earth-be-theoretically-possible:
+  0/78
+Dec 25, 2018 10:41:59 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: OSS
+Why-was-the-Earth-named-Earth-Who-named-it-How-have-the-planets-been-named:
+  2/115

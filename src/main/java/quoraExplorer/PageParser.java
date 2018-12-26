@@ -14,18 +14,18 @@ public class PageParser {
     private final String pageHtml;
     private List<Answer> answers;
 
-    public PageParser(String pageSource) {
+    PageParser(String pageSource) {
         this.pageHtml = pageSource;
     }
 
-    public List<Answer> getAnswers() {
+    List<Answer> getAnswers() {
         if(answers == null) {
             parseAnswers();
         }
         return answers;
     }
 
-    public int getAnswerCount() {
+    int getAnswerCount() {
         if(answers == null) {
             parseAnswers();
         }

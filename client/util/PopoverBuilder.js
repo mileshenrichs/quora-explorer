@@ -39,6 +39,31 @@ class PopoverBuilder {
         detailSection.removeChild(detailSection.children[1]);
     }
 
+    startLoadBar(loadTime) {
+        const NUMBER_OF_TICKS = 20;
+
+        const timePerTick = loadTime / NUMBER_OF_TICKS;
+        const percentagePerTick = 100 / NUMBER_OF_TICKS;
+        let tickCount = 0;
+        const tickTimeout = setInterval(() => {
+            if(tickCount < NUMBER_OF_TICKS) {
+                // obviously a disgusting way to do animation but for some reason I can't access
+                // the style attribute on the loading bar DOM element
+                tickCount++;
+                this.popoverDivDOMReference.querySelector('div.qe-loading-bar-fill').classList.remove('load-' + (tickCount - 1));
+                this.popoverDivDOMReference.querySelector('div.qe-loading-bar-fill').classList.add('load-' + tickCount);
+            } else {
+                this.fadeOutLoadBar();
+                clearInterval(tickTimeout);
+            }
+        }, timePerTick);
+    }
+
+    fadeOutLoadBar() {
+        const loadBar = this.popoverDivDOMReference.querySelector('div.qe-loading-bar-fill');
+        loadBar.classList.add('all-done');
+    }
+
     setNumAnswers(numAnswers) {
         this.setChunkData(0, numAnswers);
     }

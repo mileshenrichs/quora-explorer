@@ -39,6 +39,7 @@ class PopoverManager {
                         // if popover still open, update num answers with the new data
                         if(this.currentOpenPopoverQuestionIndex === questionIndex) {
                             popoverBuilder.setNumAnswers(count);
+                            popoverBuilder.startLoadBar(8200);
                         }
                     });
 

@@ -25,6 +25,10 @@ class HTMLFactory {
             '' +
             '        <a href="https://quora.com" class="view-question-button">view</a>' +
             '    </div>' +
+            '' +
+            '    <div class="qe-loading-bar-wrapper">' +
+            '        <div class="qe-loading-bar-fill load-0"></div>' +
+            '    </div>' +
             '</div>';
     }
 

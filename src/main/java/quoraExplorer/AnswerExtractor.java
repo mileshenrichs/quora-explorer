@@ -32,8 +32,15 @@ public class AnswerExtractor {
 
             while(parser.getAnswerCount() > answers.size()) {
                 answers = parser.getAnswers();
+
+                // stop after collecting 36 answers,
+                // about 70% of the time we'll have already seen the highest rated answer
+                if(answers.size() >= 36) {
+                    break;
+                }
+
                 jsExecutor.executeScript("window.scrollTo(0, document.body.scrollHeight)");
-                TimeUnit.SECONDS.sleep((long) 2);
+                TimeUnit.SECONDS.sleep((long) 1.75);
                 parser = new PageParser(driver.getPageSource());
             }
 

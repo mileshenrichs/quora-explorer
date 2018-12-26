@@ -15,3 +15,15 @@ Average answer count: 207
 Average index of a top rated answer: 28
 Worst ranked top answer index: 124/340
 ```
+
+## Decision
+
+The worst ranked top answer index of 124 was pretty concerning, but I've decided to sacrifice the guarantee of correctness in exchange for a **much lower** runtime ceiling.
+
+I also found:
+```$xslt
+% of questions whose top rated answer index was greater than 46 upvotes: 26%  => 74% correct
+% of questions whose top rated answer index was greater than 36 upvotes: 30%  => 70% correct
+```
+
+I can get about **70%** correctness by only making about three scrolls in the worst case, so it's worth it to tradeoff correctness for time in this case.

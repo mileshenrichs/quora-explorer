@@ -102,9 +102,9 @@ class PopoverManager {
      */
     predictLoadTimeFromAnswerCount(ansCount) {
         if(ansCount <= 7)
-            return 2250;
+            return Config.shortLoadTime();
 
-        else return 4000;
+        else return Config.longLoadTime();
     }
 
 }

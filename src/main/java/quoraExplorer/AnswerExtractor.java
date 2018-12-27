@@ -3,6 +3,7 @@ package quoraExplorer;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,15 +20,21 @@ public class AnswerExtractor {
         this.questionUrl = questionUrl;
     }
 
-    public List<Answer> getAnswers() {
-        try {
-            System.setProperty("webdriver.chrome.driver", "C:\\chromedriver_win32\\chromedriver.exe");
-            System.setProperty("webdriver.chrome.silentOutput", "true");
-            WebDriver driver = new ChromeDriver();
-            JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
-            driver.get(questionUrl);
+    List<Answer> getAnswers() {
+        List<Answer> answers = new ArrayList<>();
 
-            List<Answer> answers = new ArrayList<>();
+        System.setProperty("webdriver.chrome.driver", System.getenv("CHROME_DRIVER_PATH"));
+        System.setProperty("webdriver.chrome.silentOutput", "true");
+
+        ChromeOptions options = new ChromeOptions();
+        // add arguments so it works on Linux
+        options.addArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage");
+        WebDriver driver = new ChromeDriver(options);
+
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        driver.get(questionUrl);
+
+        try {
             PageParser parser = new PageParser(driver.getPageSource());
 
             while(parser.getAnswerCount() > answers.size()) {
@@ -43,13 +50,12 @@ public class AnswerExtractor {
                 TimeUnit.SECONDS.sleep((long) 1.75);
                 parser = new PageParser(driver.getPageSource());
             }
-
-            driver.quit();
-            return answers;
         } catch (InterruptedException e) {
             e.printStackTrace();
+        } finally {
+            driver.quit();
         }
 
-        return new ArrayList<>();
+        return answers;
     }
 }

@@ -165,7 +165,7 @@ a.view-question-button:hover {
 .qe-loading-bar-fill {
     width: 0;
     background: gray;
-    transition: width 0.7s ease-in-out;
+    transition: width 0.25s ease-in-out;
 }
 
 .qe-loading-bar-fill.all-done {

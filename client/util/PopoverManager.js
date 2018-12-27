@@ -102,9 +102,9 @@ class PopoverManager {
      */
     predictLoadTimeFromAnswerCount(ansCount) {
         if(ansCount <= 7)
-            return 6000;
+            return 2250;
 
-        else return 8000;
+        else return 4000;
     }
 
 }

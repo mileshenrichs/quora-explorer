@@ -4,7 +4,7 @@
 class ScrapeService {
 
     static getTopRatedAnswer(qId) {
-        return fetch('http://localhost:8080/api/top-rated-answer?q=' + encodeURIComponent(qId));
+        return fetch('http://quora-explorer.us-west-1.elasticbeanstalk.com/api/top-rated-answer?q=' + encodeURIComponent(qId));
     }
 
 }

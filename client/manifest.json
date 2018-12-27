@@ -13,6 +13,7 @@
   "permissions": [
     "*://*.quora.com/*",
     "http://localhost/*",
+    "http://quora-explorer.us-west-1.elasticbeanstalk.com/*",
     "webRequest"
   ],
 

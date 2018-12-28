@@ -11,11 +11,6 @@ import java.util.List;
 @CrossOrigin
 public class ExploreController {
 
-    @GetMapping("/")
-    public String happyHealthCheck() {
-        return "It's all good";
-    }
-
     @GetMapping("/api/top-rated-answer")
     public String getTopRatedAnswer(
             @RequestParam(value="q") String q

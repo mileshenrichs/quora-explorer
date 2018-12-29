@@ -1,7 +1,8 @@
 .idea/
 out/
 target/
-rnd/design/landing-page
+rnd/design/landing-page/*
+!rnd/design/landing-page/landing-page.psd
 src/main/resources
 pom.xml.tag
 pom.xml.releaseBackup

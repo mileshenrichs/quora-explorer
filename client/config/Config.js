@@ -1,5 +1,5 @@
 // establish config setting by setting value to 'DEV' or 'PROD'
-const qeConfig = 'DEV';
+const qeConfig = 'PROD';
 
 class Config {
 
@@ -7,7 +7,7 @@ class Config {
         if(qeConfig === 'DEV')
             return 'http://localhost:8080';
         else
-            return 'http://quora-explorer.us-west-1.elasticbeanstalk.com';
+            return 'https://quoraexplorer.com';
     }
 
     static shortLoadTime() {

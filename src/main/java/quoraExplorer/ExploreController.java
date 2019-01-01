@@ -17,7 +17,8 @@ public class ExploreController {
             @RequestParam(value="q") String q,
             HttpServletRequest req
     ) {
-        System.out.println("Question id: " + q + " // Requested by " + getRequestingIPAddress(req));
+        logRequest(q, req);
+
         AnswerExtractor answerExtractor = new AnswerExtractor("https://quora.com/" + q);
         List<Answer> answers = answerExtractor.getAnswers();
         if(answers.isEmpty()) {
@@ -26,6 +27,14 @@ public class ExploreController {
 
         AnswerListAnalyzer answerListAnalyzer = new AnswerListAnalyzer(answers);
         return answerListAnalyzer.pickHighestRatedAnswer();
+    }
+
+    private void logRequest(String questionId, HttpServletRequest request) {
+        System.out.print("Question id: " + questionId);
+        if(System.getenv("IS_PROD_ENVIRONMENT") != null) {
+            System.out.print(" // Requested by " + getRequestingIPAddress(request));
+        }
+        System.out.println();
     }
 
     private String getRequestingIPAddress(HttpServletRequest request) {

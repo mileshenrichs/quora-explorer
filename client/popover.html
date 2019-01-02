@@ -1,46 +1,46 @@
 <!-- This file isn't directly used in the extension, but its contents are made available through util/HTMLFactory.js -->
 
 <!-- base popover markup -->
-<div class="qe-popover">
-    <h2 class="question-title"></h2>
+<div id="qe-popover">
+    <h2 id="question-title"></h2>
 
-    <div class="question-detail-section">
-        <div class="question-data">
-            <div class="info-chunk">
-                <span class="info-chunk__number">0</span>
-                <span class="info-chunk__label">answers</span>
+    <div id="question-detail-section">
+        <div id="question-data">
+            <div id="info-chunk-answers" class="info-chunk">
+                <span id="info-chunk-answers__number">0</span>
+                <span id="info-chunk-answers__label">answers</span>
             </div>
 
-            <div class="info-chunk">
-                <span class="info-chunk__number">0</span>
-                <span class="info-chunk__label">top rated</span>
+            <div id="info-chunk-toprated" class="info-chunk">
+                <span id="info-chunk-toprated__number">0</span>
+                <span id="info-chunk-toprated__label">top rated</span>
             </div>
         </div>
 
-        <a href="https://quora.com" class="view-question-button">view</a>
+        <a href="https://quora.com" id="view-question-button">view</a>
     </div>
 
-    <div class="qe-loading-bar-wrapper">
-        <div class="qe-loading-bar-fill load-0"></div>
+    <div id="qe-loading-bar-wrapper">
+        <div id="qe-loading-bar-fill" class="load-0"></div>
     </div>
 </div>
 
 <!-- loading/awaiting data state -->
-<div class="question-data">
-    <div class="info-chunk">
-        <div class="info-chunk-loading answers-loading">
+<div id="question-data">
+    <div id="info-chunk-answers" class="info-chunk">
+        <div id="info-chunk-loading-answers">
             <div></div>
         </div>
-        <span class="info-chunk__label">answers</span>
+        <span id="info-chunk-answers__label">answers</span>
     </div>
 
-    <div class="info-chunk">
-        <div class="info-chunk-loading toprated-loading">
+    <div id="info-chunk-toprated" class="info-chunk">
+        <div id="info-chunk-loading-toprated">
             <div></div>
         </div>
-        <span class="info-chunk__label">top rated</span>
+        <span id="info-chunk-toprated__label">top rated</span>
     </div>
 </div>
 
 <!-- data-saturated number info chunk -->
-<span class="info-chunk__number">0</span>
+<span class="info-chunk-answers__number">0</span>

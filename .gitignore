@@ -1,6 +1,7 @@
 .idea/
 out/
 target/
+client/builds/
 rnd/design/landing-page/*
 !rnd/design/landing-page/landing-page.psd
 src/main/resources

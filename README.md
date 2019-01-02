@@ -26,6 +26,7 @@ Elastic Beanstalk made the application very easy to deploy.  I just needed to se
 ### Specific Server Setup Steps
 Since the application uses the Chrome browser and Selenium to scrape answer pages, there are a few server installation steps that must be performed before the application functions.  I'm listing them here for the purpose of public documentation but also to remind myself of them in case I need to re-do them in the future.
 
+1. Set environment variables: `SERVER_PORT: 5000`, `IS_PROD_ENVIRONMENT: true`
 1. Set environment variable `CHROME_DRIVER_PATH: /usr/lib/chromedriver`
-2. Install the [chromedriver](https://chromedriver.storage.googleapis.com/index.html?path=2.45/) Linux executable in `/usr/lib`.  This involves using `wget` to download the zip archive into the designated folder, then extracting it using `unzip`.
-3. Install Google Chrome binary.  I had some trouble with this because the .rpm file for Chrome wasn't able to resolve all of its dependencies.  Fortunately, [this script](https://intoli.com/blog/installing-google-chrome-on-centos/) took care of the problem: `curl https://intoli.com/install-google-chrome.sh | bash`
+1. Install the [chromedriver](https://chromedriver.storage.googleapis.com/index.html?path=2.45/) Linux executable in `/usr/lib`.  This involves using `wget` to download the zip archive into the designated folder, then extracting it using `unzip`.
+1. Install Google Chrome binary.  I had some trouble with this because the .rpm file for Chrome wasn't able to resolve all of its dependencies.  Fortunately, [this script](https://intoli.com/blog/installing-google-chrome-on-centos/) took care of the problem: `curl https://intoli.com/install-google-chrome.sh | bash`

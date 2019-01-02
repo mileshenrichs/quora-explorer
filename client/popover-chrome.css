@@ -1,0 +1,3 @@
+div#qe-popover {
+    background: #ffffff url('chrome-extension://__MSG_@@extension_id__/assets/popover-bg.png') no-repeat top right;
+}

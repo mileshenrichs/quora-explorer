@@ -7,27 +7,27 @@ class HTMLFactory {
      * @returns {string} default pre-data state of popover
      */
     static getBasePopoverMarkup() {
-        return '<div class="qe-popover">' +
-            '    <h2 class="question-title"></h2>' +
+        return '<div id="qe-popover">' +
+            '    <h2 id="question-title"></h2>' +
             '' +
-            '    <div class="question-detail-section">' +
-            '        <div class="question-data">' +
-            '            <div class="info-chunk">' +
-            '                <span class="info-chunk__number">0</span>' +
-            '                <span class="info-chunk__label">answers</span>' +
+            '    <div id="question-detail-section">' +
+            '        <div id="question-data">' +
+            '            <div id="info-chunk-answers" class="info-chunk">' +
+            '                <span id="info-chunk-answers__number">0</span>' +
+            '                <span id="info-chunk-answers__label">answers</span>' +
             '            </div>' +
             '' +
-            '            <div class="info-chunk">' +
-            '                <span class="info-chunk__number">0</span>' +
-            '                <span class="info-chunk__label">top rated</span>' +
+            '            <div id="info-chunk-toprated" class="info-chunk">' +
+            '                <span id="info-chunk-toprated__number">0</span>' +
+            '                <span id="info-chunk-toprated__label">top rated</span>' +
             '            </div>' +
             '        </div>' +
             '' +
-            '        <a href="https://quora.com" class="view-question-button">view</a>' +
+            '        <a href="https://quora.com" id="view-question-button">view</a>' +
             '    </div>' +
             '' +
-            '    <div class="qe-loading-bar-wrapper">' +
-            '        <div class="qe-loading-bar-fill load-0"></div>' +
+            '    <div id="qe-loading-bar-wrapper">' +
+            '        <div id="qe-loading-bar-fill" class="load-0"></div>' +
             '    </div>' +
             '</div>';
     }
@@ -36,29 +36,30 @@ class HTMLFactory {
      * @returns {string} markup for pre-data info chunks
      */
     static getDetailSectionLoadingState() {
-        return '<div class="question-data">' +
-            '    <div class="info-chunk">' +
-            '        <div class="info-chunk-loading answers-loading">' +
+        return '<div id="question-data">' +
+            '    <div id="info-chunk-answers" class="info-chunk">' +
+            '        <div id="info-chunk-loading-answers">' +
             '            <div></div>' +
             '        </div>' +
-            '        <span class="info-chunk__label">answers</span>' +
+            '        <span id="info-chunk-answers__label">answers</span>' +
             '    </div>' +
             '' +
-            '    <div class="info-chunk">' +
-            '        <div class="info-chunk-loading toprated-loading">' +
+            '    <div id="info-chunk-toprated" class="info-chunk">' +
+            '        <div id="info-chunk-loading-toprated">' +
             '            <div></div>' +
             '        </div>' +
-            '        <span class="info-chunk__label">top rated</span>' +
+            '        <span id="info-chunk-toprated__label">top rated</span>' +
             '    </div>' +
             '</div>';
     }
 
     /**
+     * @param infoChunkSuffix either 'answer' or 'toprated', indicates which info chunk is needed
      * @param val data to occupy an info chunk
      * @returns {string} a number chunk containing the given value
      */
-    static getNumberChunkContainingValue(val) {
-        return '<span class="info-chunk__number">' + val + '</span>';
+    static getNumberChunkContainingValue(infoChunkSuffix, val) {
+        return '<span id="info-chunk-' + infoChunkSuffix + '__number">' + val + '</span>';
     }
 
 }

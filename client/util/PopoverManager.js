@@ -22,7 +22,7 @@ class PopoverManager {
     openPopover(questionId) {
         const questionIndex = this.relatedQuestions.map(rq => rq.id).indexOf(questionId);
         const questionLi = this.listDOM.children[questionIndex];
-        if(!questionLi.querySelector('div.qe-popover')) { // check that there isn't already a popover open here
+        if(!questionLi.querySelector('div#qe-popover')) { // check that there isn't already a popover open here
             const relatedQuestion = this.relatedQuestions[questionIndex];
 
             const popoverBuilder = new PopoverBuilder(questionLi);
@@ -77,7 +77,7 @@ class PopoverManager {
      */
     closePopover() {
         const questionIndex = this.currentOpenPopoverQuestionIndex;
-        const popover = this.listDOM.children[questionIndex].querySelector('div.qe-popover');
+        const popover = this.listDOM.children[questionIndex].querySelector('div#qe-popover');
         this.currentOpenPopoverQuestionIndex = -1;
 
         popover.classList.add('fading-out');
@@ -87,7 +87,7 @@ class PopoverManager {
     }
 
     getCurrentPopoverDOMReference() {
-        return this.listDOM.children[this.currentOpenPopoverQuestionIndex].querySelector('div.qe-popover');
+        return this.listDOM.children[this.currentOpenPopoverQuestionIndex].querySelector('div#qe-popover');
     }
 
     hasPopoverOpen() {

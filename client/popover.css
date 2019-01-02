@@ -6,11 +6,10 @@ li.related_question span.ui_qtext_rendered_qtext {
     padding-top: 10px;
 }
 
-div.qe-popover {
+div#qe-popover {
     box-sizing: border-box;
     height: 130px;
     width: 340px;
-    background: #ffffff url('/assets/popover-bg.png') no-repeat top right;
     -webkit-background-size: 238px;
     background-size: 238px;
     padding: 18px;
@@ -34,7 +33,7 @@ div.qe-popover {
     }
 }
 
-div.qe-popover.fading-out {
+div#qe-popover.fading-out {
     animation: popoverFadeout 0.3s linear forwards;
 }
 
@@ -50,7 +49,7 @@ div.qe-popover.fading-out {
     }
 }
 
-.qe-popover h2.question-title {
+#qe-popover h2#question-title {
     font-weight: bold;
     color: #000;
     display: block;
@@ -61,34 +60,38 @@ div.qe-popover.fading-out {
     margin-bottom: 12px;
 }
 
-.qe-popover div.question-detail-section {
+#qe-popover div#question-detail-section {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.question-detail-section .info-chunk {
+#question-detail-section #info-chunk-answers,
+#question-detail-section #info-chunk-toprated {
     display: inline-block;
 }
 
-.question-detail-section .info-chunk:first-child {
+#question-detail-section #info-chunk-answers {
     width: 85px;
 }
 
-.question-detail-section .info-chunk span {
+#question-detail-section #info-chunk-answers span,
+#question-detail-section #info-chunk-toprated span {
     display: block;
 }
 
-.question-detail-section .info-chunk__number {
+#question-detail-section #info-chunk-answers__number,
+#question-detail-section #info-chunk-toprated__number {
     font-size: 30px;
     color: #b92b27;
 }
 
-.question-detail-section .info-chunk__label {
+#question-detail-section span#info-chunk-answers__label,
+#question-detail-section span#info-chunk-toprated__label {
     color: #8b8b8b;
 }
 
-a.view-question-button {
+a#view-question-button {
     padding: 5px 14px;
     background: #b92b27;
     border-radius: 2px;
@@ -99,7 +102,7 @@ a.view-question-button {
     transition: background-color 0.2s ease-in-out;
 }
 
-a.view-question-button:hover {
+a#view-question-button:hover {
     background: #a3221f;
     text-decoration: none;
 }
@@ -126,7 +129,8 @@ a.view-question-button:hover {
     }
 }
 
-.info-chunk-loading {
+#info-chunk-loading-answers,
+#info-chunk-loading-toprated {
     position: relative;
     display: block;
     width: 100%;
@@ -136,7 +140,8 @@ a.view-question-button:hover {
     overflow: hidden;
 }
 
-.info-chunk-loading div {
+#info-chunk-loading-answers div,
+#info-chunk-loading-toprated div {
     position: absolute;
     width: 18px;
     height: 18px;
@@ -149,12 +154,12 @@ a.view-question-button:hover {
     animation: lds-dual-ring 2.8s linear infinite;
 }
 
-.info-chunk-loading.toprated-loading div {
+#info-chunk-loading-toprated div {
     left: 14px;
 }
 
-.qe-loading-bar-wrapper,
-.qe-loading-bar-fill {
+#qe-loading-bar-wrapper,
+#qe-loading-bar-fill {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -162,13 +167,13 @@ a.view-question-button:hover {
     height: 2px;
 }
 
-.qe-loading-bar-fill {
+#qe-loading-bar-fill {
     width: 0;
     background: gray;
     transition: width 0.25s ease-in-out;
 }
 
-.qe-loading-bar-fill.all-done {
+#qe-loading-bar-fill.all-done {
     animation: fadeOutOpacity 0.6s ease-in-out forwards;
 }
 
@@ -182,63 +187,63 @@ a.view-question-button:hover {
     }
 }
 
-.qe-loading-bar-fill.load-1 {
+#qe-loading-bar-fill.load-1 {
     width: 5%;
 }
-.qe-loading-bar-fill.load-2 {
+#qe-loading-bar-fill.load-2 {
     width: 10%;
 }
-.qe-loading-bar-fill.load-3 {
+#qe-loading-bar-fill.load-3 {
     width: 15%;
 }
-.qe-loading-bar-fill.load-4 {
+#qe-loading-bar-fill.load-4 {
     width: 20%;
 }
-.qe-loading-bar-fill.load-5 {
+#qe-loading-bar-fill.load-5 {
     width: 25%;
 }
-.qe-loading-bar-fill.load-6 {
+#qe-loading-bar-fill.load-6 {
     width: 30%;
 }
-.qe-loading-bar-fill.load-7 {
+#qe-loading-bar-fill.load-7 {
     width: 35%;
 }
-.qe-loading-bar-fill.load-8 {
+#qe-loading-bar-fill.load-8 {
     width: 40%;
 }
-.qe-loading-bar-fill.load-9 {
+#qe-loading-bar-fill.load-9 {
     width: 45%;
 }
-.qe-loading-bar-fill.load-10 {
+#qe-loading-bar-fill.load-10 {
     width: 50%;
 }
-.qe-loading-bar-fill.load-11 {
+#qe-loading-bar-fill.load-11 {
     width: 55%;
 }
-.qe-loading-bar-fill.load-12 {
+#qe-loading-bar-fill.load-12 {
     width: 60%;
 }
-.qe-loading-bar-fill.load-13 {
+#qe-loading-bar-fill.load-13 {
     width: 65%;
 }
-.qe-loading-bar-fill.load-14 {
+#qe-loading-bar-fill.load-14 {
     width: 70%;
 }
-.qe-loading-bar-fill.load-15 {
+#qe-loading-bar-fill.load-15 {
     width: 75%;
 }
-.qe-loading-bar-fill.load-16 {
+#qe-loading-bar-fill.load-16 {
     width: 80%;
 }
-.qe-loading-bar-fill.load-17 {
+#qe-loading-bar-fill.load-17 {
     width: 85%;
 }
-.qe-loading-bar-fill.load-18 {
+#qe-loading-bar-fill.load-18 {
     width: 90%;
 }
-.qe-loading-bar-fill.load-19 {
+#qe-loading-bar-fill.load-19 {
     width: 95%;
 }
-.qe-loading-bar-fill.load-20 {
+#qe-loading-bar-fill.load-20 {
     width: 100%;
 }

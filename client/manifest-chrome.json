@@ -35,7 +35,10 @@
         "util/HTMLFactory.js",
         "explorer.js"
       ],
-      "css": ["popover.css"]
+      "css": [
+        "popover.css",
+        "popover-chrome.css"
+      ]
     }
   ],
 

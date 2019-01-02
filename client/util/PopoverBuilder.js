@@ -8,7 +8,7 @@ class PopoverBuilder {
 
     constructor(liDOMReference) {
         this.initNewPopover(liDOMReference);
-        this.popoverDivDOMReference = liDOMReference.querySelector('div.qe-popover');
+        this.popoverDivDOMReference = liDOMReference.querySelector('div#qe-popover');
     }
 
     initNewPopover(liDOMReference) {
@@ -17,16 +17,16 @@ class PopoverBuilder {
         liDOMReference.appendChild(popoverContent);
 
         // view link click listener to prompt browser navigation to question (for some reason link href doesn't work)
-        popoverContent.querySelector('a.view-question-button').addEventListener('click', this.followQuestionLink);
+        popoverContent.querySelector('a#view-question-button').addEventListener('click', this.followQuestionLink);
     }
 
     setTitle(title) {
-        const h2 = this.popoverDivDOMReference.querySelector('h2.question-title');
+        const h2 = this.popoverDivDOMReference.querySelector('h2#question-title');
         h2.innerHTML = title;
     }
 
     setViewButtonUrl(urlHref) {
-        const btn = this.popoverDivDOMReference.querySelector('a.view-question-button');
+        const btn = this.popoverDivDOMReference.querySelector('a#view-question-button');
         btn.setAttribute('href', urlHref);
     }
 
@@ -34,7 +34,7 @@ class PopoverBuilder {
         const domParser = new DOMParser().parseFromString(HTMLFactory.getDetailSectionLoadingState(), 'text/xml');
         const detailSectionLoading = domParser.firstChild;
 
-        const detailSection = this.popoverDivDOMReference.querySelector('div.question-detail-section');
+        const detailSection = this.popoverDivDOMReference.querySelector('div#question-detail-section');
         detailSection.insertBefore(detailSectionLoading, detailSection.firstChild);
         detailSection.removeChild(detailSection.children[1]);
     }
@@ -50,8 +50,8 @@ class PopoverBuilder {
                 // obviously a disgusting way to do animation but for some reason I can't access
                 // the style attribute on the loading bar DOM element
                 tickCount++;
-                this.popoverDivDOMReference.querySelector('div.qe-loading-bar-fill').classList.remove('load-' + (tickCount - 1));
-                this.popoverDivDOMReference.querySelector('div.qe-loading-bar-fill').classList.add('load-' + tickCount);
+                this.popoverDivDOMReference.querySelector('div#qe-loading-bar-fill').classList.remove('load-' + (tickCount - 1));
+                this.popoverDivDOMReference.querySelector('div#qe-loading-bar-fill').classList.add('load-' + tickCount);
             } else {
                 this.fadeOutLoadBar();
                 clearInterval(tickTimeout);
@@ -60,7 +60,7 @@ class PopoverBuilder {
     }
 
     fadeOutLoadBar() {
-        const loadBar = this.popoverDivDOMReference.querySelector('div.qe-loading-bar-fill');
+        const loadBar = this.popoverDivDOMReference.querySelector('div#qe-loading-bar-fill');
         if(loadBar) {
             loadBar.classList.add('load-20');
             loadBar.classList.add('all-done');
@@ -81,7 +81,8 @@ class PopoverBuilder {
      * @param data string/number value to occupy the space
      */
     setChunkData(chunkIndex, data) {
-        const domParser = new DOMParser().parseFromString(HTMLFactory.getNumberChunkContainingValue(data), 'text/xml');
+        const infoChunkSuffix = chunkIndex === 0 ? 'answers' : 'toprated';
+        const domParser = new DOMParser().parseFromString(HTMLFactory.getNumberChunkContainingValue(infoChunkSuffix, data), 'text/xml');
         const answerChunk = domParser.firstChild;
 
         const infoChunk = this.popoverDivDOMReference.querySelectorAll('div.info-chunk')[chunkIndex];

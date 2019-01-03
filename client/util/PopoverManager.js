@@ -13,6 +13,7 @@ class PopoverManager {
         this.relatedQuestions = relatedQuestions;
         this.listDOM = listDOM;
         this.currentOpenPopoverQuestionIndex = -1;
+        this.popoversCurrentlyLoadingData = new Set();
     }
 
     /**
@@ -35,37 +36,62 @@ class PopoverManager {
             } else {
                 popoverBuilder.indicateLoadingState();
 
-                // scrape answer count
-                QuestionScraper.getAnswerCount("https://quora.com/" + relatedQuestion.id)
-                    .then(count => {
-                        // update data in RelatedQuestion state object
-                        this.relatedQuestions[questionIndex].numAnswers = count;
+                if(!this.popoversCurrentlyLoadingData.has(relatedQuestion.id)) {
+                    this.popoversCurrentlyLoadingData.add(relatedQuestion.id);
 
-                        // if popover still open, update num answers with the new data
-                        if(this.currentOpenPopoverQuestionIndex === questionIndex) {
-                            popoverBuilder.setNumAnswers(count);
-                            const predictedLoadTime = this.predictLoadTimeFromAnswerCount(count);
-                            popoverBuilder.startLoadBar(predictedLoadTime);
-                        }
+                    // scrape answer count
+                    QuestionScraper.getAnswerCount("https://quora.com/" + relatedQuestion.id)
+                        .then(count => {
+                            // update data in RelatedQuestion state object
+                            this.relatedQuestions[questionIndex].numAnswers = count;
+
+                            // if popover still open, update num answers with the new data
+                            if(this.currentOpenPopoverQuestionIndex === questionIndex) {
+                                popoverBuilder.setNumAnswers(count);
+                                const predictedLoadTime = this.predictLoadTimeFromAnswerCount(count);
+                                popoverBuilder.startLoadBar(predictedLoadTime);
+                            }
+                        });
+
+                    // scrape top rated answer
+                    ScrapeService.getTopRatedAnswer(relatedQuestion.id)
+                        .then(res => res.text())
+                        .then(topRatedAns => {
+                            this.relatedQuestions[questionIndex].topRatedAnswerScore = topRatedAns;
+
+                            if(this.currentOpenPopoverQuestionIndex === questionIndex) {
+                                popoverBuilder.fadeOutLoadBar();
+                                popoverBuilder.setTopRatedAnswer(topRatedAns);
+                            }
+                        }).catch(err => {
+                            console.log(err);
+                            if(this.currentOpenPopoverQuestionIndex === questionIndex) {
+                                popoverBuilder.fadeOutLoadBar();
+                                popoverBuilder.setTopRatedAnswer('--');
+                            }
+                        }).then(() => {
+                            this.popoversCurrentlyLoadingData.delete(relatedQuestion.id);
                     });
-
-                // scrape top rated answer
-                ScrapeService.getTopRatedAnswer(relatedQuestion.id)
-                    .then(res => res.text())
-                    .then(topRatedAns => {
-                        this.relatedQuestions[questionIndex].topRatedAnswerScore = topRatedAns;
-
-                        if(this.currentOpenPopoverQuestionIndex === questionIndex) {
-                            popoverBuilder.fadeOutLoadBar();
-                            popoverBuilder.setTopRatedAnswer(topRatedAns);
+                } else {
+                    // still waiting for data, so set timeout to run that constantly checks arrival of data
+                    // for given question while popover is still open.  clear timeout on popover close/retrieval of top rated answer
+                    let hasSetAnswers = false;
+                    const dataCheckInterval = setInterval(() => {
+                        if(!this.currentOpenPopoverQuestionIndex === questionIndex) {
+                            clearInterval(dataCheckInterval);
                         }
-                    }).catch(err => {
-                        console.log(err);
-                        if(this.currentOpenPopoverQuestionIndex === questionIndex) {
-                            popoverBuilder.fadeOutLoadBar();
-                            popoverBuilder.setTopRatedAnswer('--');
+
+                        if(!hasSetAnswers && this.relatedQuestions[questionIndex].numAnswers) {
+                            popoverBuilder.setNumAnswers(this.relatedQuestions[questionIndex].numAnswers);
+                            hasSetAnswers = true;
                         }
-                });
+
+                        if(this.relatedQuestions[questionIndex].topRatedAnswerScore) {
+                            popoverBuilder.setTopRatedAnswer(this.relatedQuestions[questionIndex].topRatedAnswerScore);
+                            clearInterval(dataCheckInterval);
+                        }
+                    }, 50);
+                }
             }
 
             this.currentOpenPopoverQuestionIndex = questionIndex;

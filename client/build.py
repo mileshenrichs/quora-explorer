@@ -13,7 +13,7 @@ from distutils.dir_util import copy_tree
 print('Deleting existing build folder')
 shutil.rmtree('builds', ignore_errors=True)
 
-# copy contents of root folder into builds/qe-build-chrome and builds/qe-build-firefox
+# copy contents of root folder into temp folder 
 print('Initializing temp directory in project root')
 clientDir = os.getcwd()
 tempDir = os.path.join(os.path.dirname(clientDir), 'tmp')
@@ -21,6 +21,7 @@ tempDir = os.path.join(os.path.dirname(clientDir), 'tmp')
 print('Copying contents of client into temp directory')
 copy_tree(clientDir, tempDir)
 
+# move contents of temp to builds/qe-build-chrome and builds/qe-build-firefox
 print('Copying contents of temp to build folders for each browser')
 buildsDir = os.path.join(clientDir, 'builds')
 chromeBuildDir = os.path.join(buildsDir, 'qe-build-chrome')
@@ -42,6 +43,13 @@ print('Customizing Firefox build')
 os.remove(os.path.join(firefoxBuildDir, 'manifest-chrome.json'))
 os.remove(os.path.join(firefoxBuildDir, 'popover-chrome.css'))
 os.rename(os.path.join(firefoxBuildDir, 'manifest-firefox.json'), os.path.join(firefoxBuildDir, 'manifest.json'))
+
+# strip unneeded files for production build: build.py, popover.html
+print('Stripping unneeded development files')
+os.remove(os.path.join(chromeBuildDir, 'build.py'))
+os.remove(os.path.join(chromeBuildDir, 'popover.html'))
+os.remove(os.path.join(firefoxBuildDir, 'build.py'))
+os.remove(os.path.join(firefoxBuildDir, 'popover.html'))
 
 # compress zip archives (for upload to extension stores)
 print('Compressing zip archives')

@@ -1,13 +1,14 @@
-# Due to a browser incompatibility involving file paths to images in CSS, two different manifests are needed for Chrome and Firefox, respectively.
+# Due to a browser incompatibility involving file paths to images in CSS, 
+# two different manifests are needed for Chrome and Firefox, respectively.
 # As a result, the contents of client/ can't be directly packaged into an extension for either platform
-# This script transforms the source folder into builds that can be packaged and uploaded to Chrome/Firefox extension repositories
+# This script transforms the source folder into builds that can be packaged and uploaded to Chrome/Firefox stores
 # To invoke the script, enter the following command in cmd at quora-explorer/client: "python build.py"
 
 import shutil
 import os
 from distutils.dir_util import copy_tree
 
-# -------------------------------------------------------------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------------------------------------------
 
 # delete existing build folder
 print('Deleting existing build folder')
@@ -43,6 +44,29 @@ print('Customizing Firefox build')
 os.remove(os.path.join(firefoxBuildDir, 'manifest-chrome.json'))
 os.remove(os.path.join(firefoxBuildDir, 'popover-chrome.css'))
 os.rename(os.path.join(firefoxBuildDir, 'manifest-firefox.json'), os.path.join(firefoxBuildDir, 'manifest.json'))
+
+# remove localhost from permission in manifest
+print('Modifying manifest: removing localhost from permissions')
+
+# remove localhost permission from chrome
+with open(os.path.join(chromeBuildDir, 'manifest.json'), 'r') as manifestFile:
+  contents = manifestFile.read()
+  contents = contents.replace('"http://localhost/*",\n', '')
+  contents = contents.replace('    "http', '"http')
+  with open(os.path.join(chromeBuildDir, 'manifest-1.json'), 'w') as rewrittenFile:
+    rewrittenFile.write(contents)
+os.remove(os.path.join(chromeBuildDir, 'manifest.json'))
+os.rename(os.path.join(chromeBuildDir, 'manifest-1.json'), os.path.join(chromeBuildDir, 'manifest.json'))
+
+# remove localhost permission from firefox
+with open(os.path.join(firefoxBuildDir, 'manifest.json'), 'r') as manifestFile:
+  contents = manifestFile.read()
+  contents = contents.replace('"http://localhost/*",\n', '')
+  contents = contents.replace('    "http', '"http')
+  with open(os.path.join(firefoxBuildDir, 'manifest-1.json'), 'w') as rewrittenFile:
+    rewrittenFile.write(contents)
+os.remove(os.path.join(firefoxBuildDir, 'manifest.json'))
+os.rename(os.path.join(firefoxBuildDir, 'manifest-1.json'), os.path.join(firefoxBuildDir, 'manifest.json'))
 
 # strip unneeded files for production build: build.py, popover.html
 print('Stripping unneeded development files')

@@ -16,14 +16,15 @@ shutil.rmtree('builds', ignore_errors=True)
 # copy contents of root folder into builds/qe-build-chrome and builds/qe-build-firefox
 print('Initializing temp directory in project root')
 clientDir = os.getcwd()
-tempDir = os.path.dirname(clientDir) + '\\tmp'
+tempDir = os.path.join(os.path.dirname(clientDir), 'tmp')
 
 print('Copying contents of client into temp directory')
 copy_tree(clientDir, tempDir)
 
 print('Copying contents of temp to build folders for each browser')
-chromeBuildDir = clientDir + '\\builds\\qe-build-chrome'
-firefoxBuildDir = clientDir + '\\builds\\qe-build-firefox'
+buildsDir = os.path.join(clientDir, 'builds')
+chromeBuildDir = os.path.join(buildsDir, 'qe-build-chrome')
+firefoxBuildDir = os.path.join(buildsDir, 'qe-build-firefox')
 copy_tree(tempDir, chromeBuildDir)
 copy_tree(tempDir, firefoxBuildDir)
 
@@ -32,14 +33,19 @@ shutil.rmtree(tempDir, ignore_errors=True)
 
 # customize chrome build
 print('Customizing Chrome build')
-os.remove(chromeBuildDir + '\\manifest-firefox.json')
-os.remove(chromeBuildDir + '\\popover-firefox.css')
-os.rename(chromeBuildDir + '\\manifest-chrome.json', chromeBuildDir + '\\manifest.json')
+os.remove(os.path.join(chromeBuildDir, 'manifest-firefox.json'))
+os.remove(os.path.join(chromeBuildDir, 'popover-firefox.css'))
+os.rename(os.path.join(chromeBuildDir, 'manifest-chrome.json'), os.path.join(chromeBuildDir, 'manifest.json'))
 
 # customize firefox build
 print('Customizing Firefox build')
-os.remove(firefoxBuildDir + '\\manifest-chrome.json')
-os.remove(firefoxBuildDir + '\\popover-chrome.css')
-os.rename(firefoxBuildDir + '\\manifest-firefox.json', firefoxBuildDir + '\\manifest.json')
+os.remove(os.path.join(firefoxBuildDir, 'manifest-chrome.json'))
+os.remove(os.path.join(firefoxBuildDir, 'popover-chrome.css'))
+os.rename(os.path.join(firefoxBuildDir, 'manifest-firefox.json'), os.path.join(firefoxBuildDir, 'manifest.json'))
+
+# compress zip archives (for upload to extension stores)
+print('Compressing zip archives')
+shutil.make_archive(chromeBuildDir, 'zip', os.path.join(buildsDir, 'qe-build-chrome'))
+shutil.make_archive(firefoxBuildDir, 'zip', os.path.join(buildsDir, 'qe-build-firefox'))
 
 print('#####  Build complete!  #####')

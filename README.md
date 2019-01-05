@@ -2,7 +2,7 @@
 
 ```place demo video here```
 
-**Quora Explorer** is a browser extension available for [Chrome](https://chrome.google.com/webstore/category/extensions) and [Firefox](https://addons.mozilla.org/en-US/firefox/extensions/) that displays a popover whenever a link to a related question is hovered.  The popover indicates the number of answers to the question as well as the answer that (likely) has the highest upvote count.  I built this extension because I often see interesting looking question titles in the "Related Questions" section on a Quora question page, but many of these questions have only a few low-quality answers and aren't worth looking at.  The extension remedies this by providing insight into the quality of the question's answers before I navigate to its page.  The extension's home page is: [https://www.quoraexplorer.com](https://www.quoraexplorer.com)
+**Quora Explorer** is a browser extension available for [Chrome](https://chrome.google.com/webstore/detail/efdnamipmhpnngkdhhobdpmkdmiloone) and [Firefox](https://addons.mozilla.org/en-US/firefox/addon/quora-explorer/) that displays a popover whenever a link to a related question is hovered.  The popover indicates the number of answers to the question as well as the answer that (likely) has the highest upvote count.  I built this extension because I often see interesting looking question titles in the "Related Questions" section on a Quora question page, but many of these questions have only a few low-quality answers and aren't worth looking at.  The extension remedies this by providing insight into the quality of the question's answers before I navigate to its page.  The extension's home page is: [https://www.quoraexplorer.com](https://www.quoraexplorer.com)
 
 ---
 

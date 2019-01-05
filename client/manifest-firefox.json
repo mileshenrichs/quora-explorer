@@ -1,9 +1,9 @@
 {
   "manifest_version": 2,
   "name": "Quora Explorer",
-  "version": "1.0.1",
+  "version": "1.0.2",
 
-  "description": "Adds helpful popover previews to related questions on Quora.",
+  "description": "Discover amazing content on Quora with Quora Explorer's helpful popovers.",
 
   "icons": {
     "48": "icons/icon-48.png",

@@ -1,1 +1,0 @@
-web: java -jar quoraexplorer-0.1.0.jar

@@ -14,7 +14,7 @@ class Config {
         if(qeConfig === 'DEV')
             return 6000;
         else
-            return 2250;
+            return 3250;
     }
 
     static longLoadTime() {

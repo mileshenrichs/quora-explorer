@@ -5,26 +5,57 @@ console.log('Quora Explorer is running.');
 // It iterates over each link in the "Related Questions" section, building a list of these questions and adding
 // event listeners to handle to open and close popovers according to mouse movement and positioning.
 
-const relatedQuestions = [];
+let relatedQuestions;
 let popoverManager;
+let hasExpandedRelatedQuestions = false;
 
-const relatedQuestionsDiv = document.querySelector('div.RelatedQuestions');
-if(relatedQuestionsDiv) {
-    const relatedQuestionsUl = relatedQuestionsDiv.querySelector('ul.list_contents');
-    const relatedQuestionLinks = relatedQuestionsUl.querySelectorAll('ul.list_contents li a');
-    relatedQuestionLinks.forEach(link => {
-        relatedQuestions.push(new RelatedQuestion(link.innerText, link.href));
-    });
+// initialize script by indexing related question links
+indexRelatedQuestions();
 
-    popoverManager = new PopoverManager(relatedQuestions, relatedQuestionsUl);
+// set listener for "More Related Questions" button
+const moreQuestionsLink = document.querySelector('a.more_link');
+moreQuestionsLink.addEventListener('click', reIndexQuestions);
 
-    relatedQuestionLinks.forEach(link => {
-        link.addEventListener('mouseenter', e => {
-            if(!popoverManager.hasPopoverOpen()) {
-                triggerQuestionPopover(e);
-            }
+/**
+ * Collect related question links into relatedQuestions list and attach hover listeners.
+ * This method is called when a Quora question page is initially loaded, and can be called
+ * again if the user clicks the "More Related Questions" button, requiring a re-indexing
+ */
+function indexRelatedQuestions() {
+    const relatedQuestionsDiv = findRelatedQuestionsDiv();
+    if(relatedQuestionsDiv) {
+        relatedQuestions = [];
+        const relatedQuestionsUl = relatedQuestionsDiv.querySelector('ul.list_contents');
+        const relatedQuestionLinks = relatedQuestionsUl.querySelectorAll('ul.list_contents li a');
+        relatedQuestionLinks.forEach(link => {
+            relatedQuestions.push(new RelatedQuestion(link.innerText, link.href));
         });
-    });
+
+        popoverManager = new PopoverManager(relatedQuestions, relatedQuestionsUl);
+
+        relatedQuestionLinks.forEach(link => {
+            link.addEventListener('mouseenter', e => {
+                if(!popoverManager.hasPopoverOpen()) {
+                    triggerQuestionPopover(e);
+                }
+            });
+        });
+    }
+}
+
+/**
+ * Get currently active related questions div.  There are three of them.
+ * If expanded questions haven't been expanded, use the first one.
+ * If it has been expanded, use the third one.
+ * @returns {Node} DOM reference to <div> containing related questions list
+ */
+function findRelatedQuestionsDiv() {
+    const relatedQuestionsDivs = document.querySelectorAll('div.RelatedQuestions');
+    if(!hasExpandedRelatedQuestions) {
+        return relatedQuestionsDivs[0];
+    } else {
+        return relatedQuestionsDivs[2];
+    }
 }
 
 function triggerQuestionPopover(hoverEvent) {
@@ -61,4 +92,15 @@ function popoverShouldRemainOpen(target) {
         return true;
 
     return false;
+}
+
+/**
+ * Re-indexes questions after "More Related Questions" button is clicked
+ */
+function reIndexQuestions() {
+    // wait for new questions to load, then re-index
+    setTimeout(() => {
+        hasExpandedRelatedQuestions = true;
+        indexRelatedQuestions();
+    }, 500);
 }

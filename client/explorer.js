@@ -5,7 +5,7 @@ console.log('Quora Explorer is running.');
 // It iterates over each link in the "Related Questions" section, building a list of these questions and adding
 // event listeners to handle to open and close popovers according to mouse movement and positioning.
 
-let relatedQuestions;
+let relatedQuestions = [];
 let popoverManager;
 let hasExpandedRelatedQuestions = false;
 
@@ -24,11 +24,13 @@ moreQuestionsLink.addEventListener('click', reIndexQuestions);
 function indexRelatedQuestions() {
     const relatedQuestionsDiv = findRelatedQuestionsDiv();
     if(relatedQuestionsDiv) {
-        relatedQuestions = [];
         const relatedQuestionsUl = relatedQuestionsDiv.querySelector('ul.list_contents');
         const relatedQuestionLinks = relatedQuestionsUl.querySelectorAll('ul.list_contents li a');
         relatedQuestionLinks.forEach(link => {
-            relatedQuestions.push(new RelatedQuestion(link.innerText, link.href));
+            const relatedQuestionId = link.href.substring(22);
+            if(!relatedQuestions.find(rq => rq.id === relatedQuestionId)) {
+                relatedQuestions.push(new RelatedQuestion(link.innerText, link.href));
+            }
         });
 
         popoverManager = new PopoverManager(relatedQuestions, relatedQuestionsUl);

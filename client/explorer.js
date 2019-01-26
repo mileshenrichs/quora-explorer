@@ -1,9 +1,9 @@
-console.log('Quora Explorer is running.');
-
 // This is the entry point for the Quora Explorer extension.
 // Its primary responsibility is to initialize the RelatedQuestions list and establish a PopoverManager for the page.
 // It iterates over each link in the "Related Questions" section, building a list of these questions and adding
 // event listeners to handle to open and close popovers according to mouse movement and positioning.
+
+console.log('Quora Explorer is running.');
 
 let relatedQuestions = [];
 let popoverManager;

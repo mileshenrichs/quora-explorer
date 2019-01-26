@@ -22,6 +22,7 @@ div#qe-popover {
     animation: popoverFadein 0.3s linear forwards;
     font-family: Georgia, serif;
     overflow: hidden;
+    z-index: 1100;
 }
 
 @keyframes popoverFadein {
@@ -170,7 +171,7 @@ a#view-question-button:hover {
 #qe-loading-bar-fill {
     width: 0;
     background: gray;
-    transition: width 0.2s ease-in-out;
+    transition: width 0.3s ease-in-out;
 }
 
 #qe-loading-bar-fill.all-done {

@@ -50,6 +50,14 @@ class PopoverManager {
                                 popoverBuilder.setNumAnswers(count);
                                 const predictedLoadTime = this.predictLoadTimeFromAnswerCount(count);
                                 popoverBuilder.startLoadBar(predictedLoadTime);
+
+                                // conclude data load if 0 answers
+                                if(count === '0') {
+                                    setTimeout(() => {
+                                        popoverBuilder.fadeOutLoadBar();
+                                        popoverBuilder.setTopRatedAnswer('--');
+                                    }, 500);
+                                }
                             }
                         });
 

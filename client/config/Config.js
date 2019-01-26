@@ -21,7 +21,7 @@ class Config {
         if(qeConfig === 'DEV')
             return 8000;
         else
-            return 4000;
+            return 5500;
     }
 
 }
